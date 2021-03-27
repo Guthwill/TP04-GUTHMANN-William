@@ -1,21 +1,13 @@
-<h4>Catalogue produits</h4>
+<h2>Catalogue produits</h2>
 
 <div>
-    <button (click)="onClick()">Afficher produits</button>
-    <input type="search" placeholder="Rechercher..." [(ngModel)]="searchText">
+  <input type="search" placeholder="Rechercher..." [(ngModel)]="searchText" />
+  <ul>
+    <app-article
+      *ngFor="let article of articles$!; let i = index"
+      [idArticle]='article.id'
+      [articleName]='article.name'
+      [articlePrice]='article.price'
+    ></app-article>
+  </ul>
 </div>
-<div *ngFor = "let nbArticles of panierArticlest">Panier : {{ nbArticles }}</div>
-
-<div *ngFor = "let t of tabData | filter: searchText">
-    {{t}}&nbsp; <button>Ajouter</button>
-</div>
-
-<!-- <ul *ngFor = "let l of tabLivre">
-    <li>{{l.titre}} / {{l.prix}}</li>
-</ul> -->
-
-<!-- <button (click)="onClickBackend()">Get Backend</button>
-
-<div  *ngFor = "let o of observable5$ | async">
-    {{o.titre}} / {{o.prix}}
-</div> -->
