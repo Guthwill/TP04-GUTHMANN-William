@@ -24,6 +24,7 @@ export class CatalogueComponent implements OnInit {
   observable5$!: Observable<any>;
  
   tabData : Array<String> = [];
+  nbArticles : Array<String> = [];
   subscribe : any;
 
   tabLivre : Array<any> = [];

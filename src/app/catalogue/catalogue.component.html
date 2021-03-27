@@ -4,9 +4,10 @@
     <button (click)="onClick()">Afficher produits</button>
     <input type="search" placeholder="Rechercher..." [(ngModel)]="searchText">
 </div>
+<div *ngFor = "let nbArticles of panierArticlest">Panier : {{ nbArticles }}</div>
 
 <div *ngFor = "let t of tabData | filter: searchText">
-    {{t}}
+    {{t}}&nbsp; <button>Ajouter</button>
 </div>
 
 <!-- <ul *ngFor = "let l of tabLivre">
