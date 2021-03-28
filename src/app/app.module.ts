@@ -15,12 +15,16 @@ import { PanierComponent } from './panier/panier.component';
 import { HomeComponent } from './home/home.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleService } from './service/article.service';
+import { PanierState } from '../shared/states/panier-state';
+import { BtnAddPanierComponent } from './btn-add-panier/btn-add-panier.component';
+import { DetailArticleComponent } from './detail-article/detail-article.component';
 
 const appRoutes: Routes = [
   // { path: '', component: HomeComponent },
   { path: '', component: CatalogueComponent },
   { path: 'formulaire', component: FormulaireComponent },
   { path: 'catalogue', component: CatalogueComponent },
+  { path: 'catalogue/:ref', component: DetailArticleComponent },
   { path: 'panier', component: PanierComponent }
 ]
 
@@ -33,7 +37,9 @@ const appRoutes: Routes = [
     FilterPipe,
     PanierComponent,
     HomeComponent,
-    ArticleComponent
+    ArticleComponent,
+    BtnAddPanierComponent,
+    DetailArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    NgxsModule.forRoot()
+    NgxsModule.forRoot([PanierState])
   ],
   providers: [
     ArticleService

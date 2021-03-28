@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  nbElementPanier = 0;
+
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.store.select(state => state.panier.panier.length).subscribe(l => this.nbElementPanier = l);
   }
 
 }

@@ -13,7 +13,9 @@ import { ArticleService } from '../service/article.service';
 
 export class CatalogueComponent implements OnInit {
 
+
   articles$!: any[];
+
   articleSubscription!: Subscription;
 
   searchText: string = "";

@@ -1,4 +1,9 @@
 <li>
-  <h4>{{ articleName }} - Prix : {{ articlePrice }}</h4>
-  <button>Ajouter</button>
+  <h4><a [routerLink]="['ref']">{{ articleName }} - Prix : {{ articlePrice }}</a></h4>
+  <app-btn-add-panier
+  [articles$]='articles$'
+  [articleRef]='articleRef'
+  [articleName]='articleName'
+  [articlePrice]='articlePrice'
+  ></app-btn-add-panier>
 </li>

@@ -6,22 +6,22 @@ export class ArticleService {
 
   articles = [
     {
-      id: 1,
+      ref: "Y2LWP95M",
       name: "Linux",
       price: 10
     },
     {
-      id: 2,
+      ref: "M75CEPTK",
       name: "Windows",
       price: 15
     },
     {
-      id: 3,
+      ref: "75FGMDCX",
       name: "Angular",
       price: 5
     },
     {
-      id: 4,
+      ref: "SX9BG46C",
       name: "Talend",
       price: 0
     },
@@ -31,10 +31,10 @@ export class ArticleService {
     this.articleSubject.next(this.articles.slice());
   }
 
-  getArticleById(id: number) {
+  getArticleById(ref: string) {
     const article = this.articles.find(
       (articleObject) => {
-        return articleObject.id === id;
+        return articleObject.ref === ref;
       }
     );
 

@@ -1,5 +1,6 @@
 import { ArticleService } from './../service/article.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-article',
@@ -8,7 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ArticleComponent implements OnInit {
 
-  @Input() idArticle!: number;
+  @Input() articles$!: any[];
+  @Input() articleRef!: string;
   @Input() articleName!: string;
   @Input() articlePrice!: number;
 
@@ -16,5 +18,4 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
