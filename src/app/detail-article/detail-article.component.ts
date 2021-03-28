@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleService } from '../service/article.service';
+import { ArticleService } from '../service/article.service'
 
 @Component({
   selector: 'app-detail-article',
@@ -10,16 +10,16 @@ import { ArticleService } from '../service/article.service';
 
 export class DetailArticleComponent implements OnInit {
 
-  name: string = 'Article';
-  price: number = 0;
+  name: string = "";
+  // price: number = 0;
+  price = new Number()
 
   constructor(private articleService: ArticleService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['ref'];
-    // this.name = this.articleService.getArticleById(ref).name;
-    // this.price = this.articleService.getArticleById(ref).price;
+    const ref: string = this.route.snapshot.params['ref'];
+    this.name = String(this.articleService.getArticleById(ref)?.name);
+    this.price = Number(this.articleService.getArticleById(ref)?.price);
   }
-
 }

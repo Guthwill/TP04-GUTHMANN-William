@@ -9,7 +9,7 @@ import { Store } from '@ngxs/store';
 })
 export class ArticleComponent implements OnInit {
 
-  @Input() articles$!: any[];
+  // @Input() articles$!: any[];
   @Input() articleRef!: string;
   @Input() articleName!: string;
   @Input() articlePrice!: number;
