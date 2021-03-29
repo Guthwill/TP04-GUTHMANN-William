@@ -20,7 +20,6 @@ export class BtnAddPanierComponent implements OnInit {
   }
 
   addPanier(ref: string, name: string, price: number) {
-    this.store.dispatch(new AddReference({'ref': ref, 'name': name, 'price': price}))
-    console.log(ref);
+    this.store.dispatch(new AddReference({ref: ref, name: name, price: price}));
   }
 }

@@ -1,1 +1,12 @@
 <h2>Panier</h2>
+<div>
+  <i *ngIf="nbElementPanier === 0">Votre panier est vide.</i>
+  <i *ngIf="nbElementPanier === 1">Vous avez {{ nbElementPanier }} article dans votre panier.</i>
+  <i *ngIf="nbElementPanier > 1">Vous avez {{ nbElementPanier }} articles dans votre panier.</i>
+</div>
+
+<ul>
+  <li (click)="delReference(panierElement.ref)" *ngFor='let panierElement of panierElements$ | async'>Je suis un article</li>
+</ul>
+
+<a [routerLink]="['/catalogue']">Retourner au catalogue</a>

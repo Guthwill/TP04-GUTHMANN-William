@@ -16,13 +16,13 @@ import { PanierStateModel } from './panier-state-model';
 export class PanierState {
 
   @Selector()
-  static getNbReference(state: PanierStateModel) {
-    return state.panier.length;
+  static getReferences(state: PanierStateModel) {
+    return state.panier;
   }
 
   @Selector()
-  static getReferences(state: PanierStateModel) {
-    return state.panier;
+  static getNbReference(state: PanierStateModel) {
+    return state.panier.length;
   }
 
   @Action(AddReference)
@@ -31,15 +31,21 @@ export class PanierState {
     { payload }: AddReference) {
     const state = getState();
     patchState({ panier: [...state.panier, payload] });
-    console.log(patchState({ panier: [...state.panier, payload] }));
   }
+
+  // @Action(DelReference)
+  // del(
+  //   { getState, patchState }: StateContext<PanierStateModel>,
+  //   { payload }: DelReference) {
+  //   const state = getState();
+  //   // TODO : Supprimer la référence passée en paramètre
+  //   patchState({ panier: [...state.panier] });
+  // }
 
   @Action(DelReference)
   del(
     { getState, patchState }: StateContext<PanierStateModel>,
     { payload }: DelReference) {
-    const state = getState();
-    // TODO : Supprimer la référence passée en paramètre
-    patchState({ panier: [...state.panier] });
+    patchState({ panier:getState().panier.filter(x => x.ref != payload) });
   }
 }

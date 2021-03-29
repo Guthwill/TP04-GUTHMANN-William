@@ -1,10 +1,12 @@
+import { Reference } from './../shared/models/reference';
 import { Subject } from 'rxjs';
+
 
 export class ArticleService {
 
-  articleSubject = new Subject<any[]>();
+  articleSubject = new Subject<Reference[]>();
 
-  articles = [
+  articles: Reference[] = [
     {
       ref: "Y2LWP95M",
       name: "Linux",

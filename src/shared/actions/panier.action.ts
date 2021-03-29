@@ -1,13 +1,14 @@
-import { Reference } from '../models/reference';
+import { Article } from '../models/article';
 
-export class AddReference {
-  static readonly type = "[Reference] Add";
+export class AddArticle {
+  static readonly type = "[Article] Add";
 
-  constructor(public payload: Reference) {}
+  constructor(public payload: Article) {}
 }
 
-export class DelReference {
-  static readonly type = "[Reference] Add";
+export class DelArticle {
+  static readonly type = "[Article] Add";
 
-  constructor(public payload: Reference) {}
+  // constructor(public payload: Article) {}
+  constructor(public payload: string) {}
 }
