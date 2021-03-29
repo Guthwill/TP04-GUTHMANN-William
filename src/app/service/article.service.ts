@@ -31,7 +31,7 @@ export class ArticleService {
     this.articleSubject.next(this.articles.slice());
   }
 
-  getArticleById(ref: string) {
+  getArticleByRef(ref: string) {
     const article = this.articles.find(
       (articleObject) => {
         return articleObject.ref === ref;
