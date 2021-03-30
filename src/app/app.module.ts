@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    NgxsModule.forRoot([PanierState])
+    NgxsModule.forRoot([PanierState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
   ],
   providers: [
     ArticleService

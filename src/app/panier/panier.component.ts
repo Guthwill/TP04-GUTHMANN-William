@@ -1,8 +1,8 @@
-import { DelReference } from './../../shared/actions/panier.action';
+import { RemoveArticle } from './../../shared/actions/panier.action';
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Reference } from 'src/shared/models/reference';
+import { Article } from 'src/shared/models/article';
 import { PanierState } from 'src/shared/states/panier-state';
 import { ArticleService } from '../service/article.service';
 
@@ -16,7 +16,7 @@ export class PanierComponent implements OnInit {
   nbElementPanier: any;
   // panierElements$!: Observable<Reference>;
 
-  @Select(PanierState.getReferences) panierElements$!: Observable<Reference>;
+  @Select(PanierState.getArticles) panierElements$!: Observable<Article>;
 
   constructor(private articleService: ArticleService,
     private store: Store) { }
@@ -29,6 +29,6 @@ export class PanierComponent implements OnInit {
   }
 
   delReference(ref: string) {
-    this.store.dispatch(new DelReference(ref));
+    this.store.dispatch(new RemoveArticle(ref));
   }
 }

@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, Selector } from '@ngxs/store'
-import { AddReference, DelReference } from '../actions/panier.action'
-import { PanierStateModel } from './panier-state-model';
+import { AddArticle, RemoveArticle } from '../actions/panier.action'
+import { Article } from '../models/article';
+
+
+export class PanierStateModel {
+  panier!: Article[];
+}
+
 
 @State<PanierStateModel>(
   {
@@ -12,40 +18,45 @@ import { PanierStateModel } from './panier-state-model';
   }
 )
 
+
 @Injectable()
 export class PanierState {
 
   @Selector()
-  static getReferences(state: PanierStateModel) {
+  static getArticles(state: PanierStateModel) {
     return state.panier;
   }
 
   @Selector()
-  static getNbReference(state: PanierStateModel) {
+  static getNbArticles(state: PanierStateModel) {
     return state.panier.length;
   }
 
-  @Action(AddReference)
+  @Action(AddArticle)
   add(
     { getState, patchState }: StateContext<PanierStateModel>,
-    { payload }: AddReference) {
+    { payload }: AddArticle) {
     const state = getState();
-    patchState({ panier: [...state.panier, payload] });
+    patchState({
+      panier: [...state.panier, payload]
+    });
   }
 
-  // @Action(DelReference)
+  // @Action(RemoveArticle)
   // del(
   //   { getState, patchState }: StateContext<PanierStateModel>,
-  //   { payload }: DelReference) {
+  //   { payload }: RemoveArticle) {
   //   const state = getState();
   //   // TODO : Supprimer la référence passée en paramètre
   //   patchState({ panier: [...state.panier] });
   // }
 
-  @Action(DelReference)
+  @Action(RemoveArticle)
   del(
     { getState, patchState }: StateContext<PanierStateModel>,
-    { payload }: DelReference) {
-    patchState({ panier:getState().panier.filter(x => x.ref != payload) });
+    { payload }: RemoveArticle) {
+    patchState({
+      panier: getState().panier.filter(x => x.ref != payload)
+    });
   }
 }
