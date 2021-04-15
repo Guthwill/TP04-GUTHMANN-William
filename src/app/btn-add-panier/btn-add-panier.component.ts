@@ -9,7 +9,6 @@ import { AddArticle } from '../../shared/actions/panier.action';
 })
 export class BtnAddPanierComponent implements OnInit {
 
-  // @Input() articles$!: any[];
   @Input() articleRef!: string;
   @Input() articleName!: string;
   @Input() articlePrice!: number;

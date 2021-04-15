@@ -14,21 +14,18 @@ import { ArticleService } from '../service/article.service';
 export class PanierComponent implements OnInit {
 
   nbElementPanier: any;
-  // panierElements$!: Observable<Reference>;
 
-  @Select(PanierState.getArticles) panierElements$!: Observable<Article>;
+  panierElements$!: Observable<Article[]>;
 
   constructor(private articleService: ArticleService,
     private store: Store) { }
 
   ngOnInit(): void {
-    this.store.select(state => state.panier.panier.length).subscribe(l => this.nbElementPanier = l);
-    // this.nbElementPanier = this.store.select(PanierState.getNbReference);
-    // console.log(this.nbElementPanier);
     this.panierElements$ = this.store.select(state => state.panier.panier);
   }
 
   delReference(ref: string) {
-    this.store.dispatch(new RemoveArticle(ref));
+    // À corriger : il supprime tous les articles avec la ref, il faut supp par rapport à l'index dans la liste
+    // this.store.dispatch(new RemoveArticle(ref));
   }
 }
